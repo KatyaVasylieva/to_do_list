@@ -15,7 +15,18 @@
       {% for task in task_list %}
         <li>
 
-          <h3>{{ task.content }}</h3>
+          <h3>
+            {{ task.content }}
+            {% if task.is_done %}
+              <a href="{% url "to-do:toggle-task-complete" pk=task.id %}" class="btn btn-secondary link-to-page">
+                Undo
+              </a>
+            {% else %}
+              <a href="{% url "to-do:toggle-task-complete" pk=task.id %}" class="btn btn-success link-to-page">
+                Complete
+              </a>
+            {% endif %}
+          </h3>
           {% if task.is_done %}
             <p style="color: green"><strong>Done</strong></p>
           {% else %}
