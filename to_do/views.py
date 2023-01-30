@@ -1,4 +1,4 @@
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views import generic
 
 from to_do.models import Task
@@ -12,7 +12,17 @@ class Index(generic.ListView):
 class TaskCreateView(generic.CreateView):
     model = Task
     fields = "__all__"
-    template_name = "to_do/task_create_form.html"
+    template_name = "to_do/task_form.html"
+    success_url = reverse_lazy("to-do:index")
 
-    # def get_success_url(self):
-    #     return reverse("to-do:index", kwargs={"pk": self.object.pk})
+
+class TaskUpdateView(generic.UpdateView):
+    model = Task
+    fields = "__all__"
+    template_name = "to_do/task_form.html"
+    success_url = reverse_lazy("to-do:index")
+
+
+class TaskDeleteView(generic.DeleteView):
+    model = Task
+    success_url = reverse_lazy("to-do:index")
