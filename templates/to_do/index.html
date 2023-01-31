@@ -2,7 +2,7 @@
 {% block content %}
   <h1>
     ToDo List
-    <a href="{% url "to-do:task-create" %}" class="btn btn-primary link-to-page">
+    <a href="{% url "to-do:task-create" %}" class="btn btn-primary link-to-page" style="float: right; margin-right: 30px">
     Create
     </a>
   </h1>
@@ -18,11 +18,11 @@
           <h3>
             {{ task.content }}
             {% if task.is_done %}
-              <a href="{% url "to-do:toggle-task-complete" pk=task.id %}" class="btn btn-secondary link-to-page">
+              <a href="{% url "to-do:toggle-task-complete" pk=task.id %}" class="btn btn-secondary link-to-page" style="float: right; margin-right: 30px">
                 Undo
               </a>
             {% else %}
-              <a href="{% url "to-do:toggle-task-complete" pk=task.id %}" class="btn btn-success link-to-page">
+              <a href="{% url "to-do:toggle-task-complete" pk=task.id %}" class="btn btn-success link-to-page" style="float: right; margin-right: 30px">
                 Complete
               </a>
             {% endif %}
